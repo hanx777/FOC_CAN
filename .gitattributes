@@ -1,0 +1,9 @@
+# Preserve original vendor file encodings and line endings byte-for-byte.
+* -text
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.rar binary
+*.a binary
+*.lib binary

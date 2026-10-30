@@ -1,0 +1,22 @@
+iRDT_Driver_SguanFOC_2026-07-24修改记录：
+1、初始版本，适配D2208电机，目前仅支持有感模式；
+2、移植CAN open协议栈；
+
+iRDT_Driver_SguanFOC_2026-08-26修改记录：
+1、增加D2208电机和D4006电机的适配宏定义；
+2、为适配V1.4.0板硬件，采样电阻需要注意，根据硬件版本来修改；
+3、增加按键控制功能；
+
+iRDT_Driver_SguanFOC_2026-09-12修改记录：
+1、增加无感控制，目前主要适配了D4006电机的滑模SMO和磁链NLFO观测器，D2208电机暂时还不支持；
+2、目前能支持的模式可以查看UserData_Config.h中的#define Define_Run_Mode 宏，该注释中对应写“yes”表示已适配，持续更新中；
+
+
+
+SguanFOC工程使用步骤：
+1、程序默认为D2208电机，如果购买的是D4006电机，请将UserData_Config.h中的Define_MOTOR改为1；
+2、确认iRDT-Driver开发板上的硬件版本，如果是V1.4的，请确认UserData_Config.h中19行的Define_Rs为0；如果是之前的版本，则需要修改Define_Rs为1；
+3、程序默认是位置-速度-电流三环模式，可修改UserData_Config.h中的Define_Run_Mode进行选择，修改前确认该模式已支持（注释中标注了yes）；
+4、可以使用在线调试或者按键控制，对于按键控制，K1为使能键，K2为关闭键，K3为增加键(速度模式下增加目标速度，位置模式下增加目标位置)，K4为减速键；
+5、先设置sguan.statu=1，进行使能，然后再设置目标速度或目标位置。无感时默认目标速度为80rad/s。
+6、程序支持串口上位机控制，波特率默认2M，支持的命令在Sugan_printf.c文件的112行，包括"MOTOR","Speed","Position","Id"等，格式为“命令=数值?”,比如发送“Speed=1.0f?”,则设置目标速度为1.0rad/s；

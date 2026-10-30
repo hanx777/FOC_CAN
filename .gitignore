@@ -1,0 +1,29 @@
+# Keil build output and per-user state
+/firmware/iRDT_Driver_SguanFOC_2026-09-12/MDK-ARM/demo_CANopenMOTOR/
+*.uvguix.*
+*.o
+*.d
+*.crf
+*.dep
+*.lst
+*.axf
+*.hex
+*.map
+*.lnp
+*.iex
+*.build_log.htm
+*.bak
+*.tmp
+*.log
+
+# Editor and machine-local files
+.vs/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+.env
+.env.*
+!.env.example
+
+# Keep vendor precompiled DSP libraries: do not ignore *.a or *.lib.
